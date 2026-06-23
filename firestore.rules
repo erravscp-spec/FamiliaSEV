@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Só utilizadores autenticados (vocês os dois, com a conta partilhada) podem ler/escrever
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
