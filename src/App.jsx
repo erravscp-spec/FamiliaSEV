@@ -4,12 +4,14 @@ import { auth } from './firebase'
 import Login from './components/Login'
 import Gravidez from './components/Gravidez'
 import Checklist from './components/Checklist'
+import Supermercado from './components/Supermercado'
 import Calendario from './components/Calendario'
 import Financas from './components/Financas'
 
 const SEPARADORES = [
   { id: 'gravidez', label: 'Gravidez', icone: '🤰' },
   { id: 'checklist', label: 'Checklist', icone: '🛒' },
+  { id: 'supermercado', label: 'Mercado', icone: '🛍️' },
   { id: 'calendario', label: 'Calendário', icone: '📅' },
   { id: 'financas', label: 'Finanças', icone: '💰' },
 ]
@@ -93,7 +95,7 @@ export default function App() {
         </div>
 
         {/* Navegação desktop */}
-        <nav className="max-w-2xl mx-auto px-4 hidden sm:flex gap-1 -mb-px">
+        <nav className="max-w-2xl mx-auto px-4 hidden sm:flex gap-1 -mb-px overflow-x-auto">
           {SEPARADORES.map((sep) => (
             <button
               key={sep.id}
@@ -114,6 +116,7 @@ export default function App() {
       <main className="max-w-2xl mx-auto px-4 py-6">
         {separadorAtivo === 'gravidez' && <Gravidez />}
         {separadorAtivo === 'checklist' && <Checklist />}
+        {separadorAtivo === 'supermercado' && <Supermercado />}
         {separadorAtivo === 'calendario' && <Calendario />}
         {separadorAtivo === 'financas' && <Financas utilizador={utilizador} />}
       </main>
@@ -124,11 +127,11 @@ export default function App() {
           <button
             key={sep.id}
             onClick={() => setSeparadorAtivo(sep.id)}
-            className={`focus-ring flex-1 flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium transition ${
+            className={`focus-ring flex-1 flex flex-col items-center gap-0.5 py-2.5 text-[10px] font-medium transition ${
               separadorAtivo === sep.id ? 'text-clay-600' : 'text-ink-800/40'
             }`}
           >
-            <span className="text-lg">{sep.icone}</span>
+            <span className="text-base">{sep.icone}</span>
             {sep.label}
           </button>
         ))}
