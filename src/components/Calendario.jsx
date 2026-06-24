@@ -9,7 +9,10 @@ const NOMES_MES = [
 const DIAS_SEMANA = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
 
 function chaveData(date) {
-  return date.toISOString().slice(0, 10) // YYYY-MM-DD
+  const ano = date.getFullYear()
+  const mes = String(date.getMonth() + 1).padStart(2, '0')
+  const dia = String(date.getDate()).padStart(2, '0')
+  return `${ano}-${mes}-${dia}` // YYYY-MM-DD, sempre na hora local
 }
 
 export default function Calendario() {
