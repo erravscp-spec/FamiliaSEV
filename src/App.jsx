@@ -7,6 +7,7 @@ import Checklist from './components/Checklist'
 import Supermercado from './components/Supermercado'
 import Calendario from './components/Calendario'
 import Financas from './components/Financas'
+import { fraseDoDia } from './frases'
 
 const SEPARADORES = [
   { id: 'gravidez', label: 'Gravidez', icone: '🤰' },
@@ -111,6 +112,15 @@ export default function App() {
           ))}
         </nav>
       </header>
+
+      {/* Frase do dia */}
+      <div className="max-w-2xl mx-auto px-4 pt-5">
+        <div className="bg-clay-100/60 border border-clay-200/60 rounded-xl2 px-5 py-3.5 text-center">
+          <p className="font-display text-sm sm:text-base text-clay-800 italic">
+            "{fraseDoDia()}"
+          </p>
+        </div>
+      </div>
 
       {/* Conteúdo */}
       <main className="max-w-2xl mx-auto px-4 py-6">
